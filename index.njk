@@ -1,0 +1,19 @@
+---
+layout: default-layout.njk
+pagination:
+  data: collections.blog
+  size: 10
+  alias: blog
+---
+
+  <h2><a>Nikita's Blog</a></h2>
+<ul>
+  {%- for post in collections.blog | reverse -%}
+    <li>
+      <h3><a href="{{ post.url | url }}">{{ post.data.title }}</a> | {{ post.date | readableDate }}</h3>
+      {% if post.data.teaser %}
+        <p>{{ post.data.teaser }}</p>
+      {% endif %} 
+    </li>
+  {%- endfor -%}
+</ul>
